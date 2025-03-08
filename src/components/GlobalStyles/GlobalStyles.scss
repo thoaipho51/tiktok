@@ -5,6 +5,9 @@
     --primary: rgb(254, 75, 75);
     --default-layout-header-height: 60px;
     --default-layout-width: 800px;
+    --black: #000;
+    --text-color: #333;
+    --search-border-radius: 92px;
 }
 
 *{
@@ -22,4 +25,16 @@ body {
     font-size: 1.6rem;
     line-height: 1.5; //Chữ cách dòng
     text-rendering: optimizeSpeed; //Tối ưu font-size tải trên mạng
+    color: var(--text-color);
+
+}
+
+button, input, [tabindex] {
+    outline: none; //bỏ hết viền mặc định của các nút
+    border: none;
+}
+
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
 }
