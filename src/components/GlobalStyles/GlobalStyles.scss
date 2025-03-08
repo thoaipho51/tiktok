@@ -3,10 +3,14 @@
 
 :root {
     --primary: rgb(254, 75, 75);
+    --default-layout-header-height: 60px;
+    --default-layout-width: 800px;
 }
 
 *{
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
