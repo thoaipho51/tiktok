@@ -4,14 +4,21 @@ import images from '~/assets/images';
 
 import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleXmark,
+    faMagnifyingGlass,
+    faSpinner,
+} from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 
 import { PopperWrapper } from '~/components/Popper';
+import Button from '~/components/Button';
 
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 import AccountItem from '../../../AccountItem';
+
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 function Header() {
@@ -27,7 +34,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="Tiktok" />
+                    <Link to="/">
+                        <img src={images.logo} alt="Tiktok" />
+                    </Link>
                 </div>
                 <Tippy
                     interactive={true}
@@ -39,7 +48,7 @@ function Header() {
                                 <AccountItem />
                                 <AccountItem />
                                 <AccountItem />
-                                <AccountItem />  
+                                <AccountItem />
                             </PopperWrapper>
                         </div>
                     )}
@@ -63,7 +72,13 @@ function Header() {
                     </div>
                 </Tippy>
 
-                <div className={cx('actions')}></div>
+                <div className={cx('actions')}>
+                    <Button text to="/upload">
+                        Upload
+                    </Button>
+                    <Button primary >Log in</Button>
+                    <Button>Log in</Button>
+                </div>
             </div>
         </header>
     );
