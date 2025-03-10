@@ -1,0 +1,50 @@
+//Menu Wrapper
+.menu-list {
+    width: 230px;
+
+    //Đi qua một cấp để nó ưu tiên hơn vì nó chỉ cụ thể hơn vị trí css
+    .menu-item {
+        margin-left: 0;
+    }
+}
+
+.menu-popper {
+    padding-bottom: 8px;
+}
+
+//Menu item
+.menu-item {
+    line-height: 1.6rem;
+    width: 100%;
+    border-radius: 0;
+    justify-content: flex-start;
+    font-weight: 600;
+    padding: 12px 12px;
+    &:hover {
+        background-color: #f3f1f1;
+    }
+}
+
+.header {
+    position: relative;
+    height: 50px;
+    margin-top: -8px;
+    box-shadow: rgb(170, 170, 170) 0px 0px 1px;
+
+}
+
+.back-btn {
+    width: 50px;
+    height: 100%;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.header-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+

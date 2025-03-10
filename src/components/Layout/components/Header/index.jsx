@@ -6,8 +6,14 @@ import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleXmark,
+    faEllipsisVertical,
     faMagnifyingGlass,
     faSpinner,
+    faEarthAsia,
+    faQuestion,
+    faKeyboard,
+    faCircleQuestion,
+    faLanguage,
 } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 
@@ -16,11 +22,44 @@ import Button from '~/components/Button';
 
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
-import AccountItem from '../../../AccountItem';
+import AccountItem from '~/components/AccountItem';
 
 import { Link } from 'react-router-dom';
+import Menu from '~/components/Popper/Menu';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEM = [
+    {
+        icon: <FontAwesomeIcon icon={faLanguage} />,
+        title: 'Ngôn Ngữ',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+            ],
+        },
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Bàn phím ảo',
+        type: 'keyboard',
+    },
+];
 function Header() {
     const [searchResults, setSearchResults] = useState([]);
 
@@ -29,6 +68,21 @@ function Header() {
             setSearchResults([]);
         }, 0);
     }, []);
+
+    //Handle logic
+    const handleMenuChange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'language':
+                console.log('Đổi ngôn ngữ',menuItem.title);
+                break;
+            case 'keyboard':
+                console.log('Bật bàn phím ảo');
+                break;
+            default:
+                console.log('Làm gì đó khác');
+                break;
+        }
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -76,8 +130,13 @@ function Header() {
                     <Button text to="/upload">
                         Upload
                     </Button>
-                    <Button primary >Log in</Button>
-                    <Button>Log in</Button>
+                    <Button primary>Log in</Button>
+
+                    <Menu items={MENU_ITEM} onChange={handleMenuChange}>
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>
