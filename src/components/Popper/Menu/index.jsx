@@ -40,6 +40,7 @@ const Menu = ({ children, items = [], onChange =defaultFn }) => {
     return (
         <Tippy
             placement="bottom-end"
+            offset={[8,8]}
             interactive
             delay={[0, 800]} // delay khi hover và bỏ ra
             render={(attrs) => (
@@ -48,8 +49,9 @@ const Menu = ({ children, items = [], onChange =defaultFn }) => {
                         {menuIndex.length > 1 && (
                             <HeaderPopper
                                 title={'Language'}
+                                //Giảm đi một cấp =>lấy phần tử từ phần tử đầu tiên đến phần tử trước phần tử cuối
                                 onBack={() => {
-                                    setMenuIndex((prev) => prev.splice(menuIndex.length - 1, 1));
+                                    setMenuIndex((prev) => prev.slice(0, prev.length - 1));
                                 }}
                             />
                         )}
@@ -57,6 +59,7 @@ const Menu = ({ children, items = [], onChange =defaultFn }) => {
                     </PopperWrapper>
                 </div>
             )}
+            onHidden={()=> setMenuIndex(prev => prev.slice(0,1))}
         >
             {children}
         </Tippy>

@@ -18,10 +18,13 @@
     width: 100%;
     border-radius: 0;
     justify-content: flex-start;
-    font-weight: 600;
+    font-weight: 500;
     padding: 12px 12px;
     &:hover {
         background-color: #f3f1f1;
+    }
+    &.separate {
+        border-top: 1px solid #e7e2e2;
     }
 }
 
