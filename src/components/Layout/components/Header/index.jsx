@@ -1,18 +1,16 @@
 import images from '~/assets/images';
 
-import HeadlessTippy from '@tippyjs/react/headless';
+// import HeadlessTippy from '@tippyjs/react/headless';
 
-import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
+import Tippy from '@tippyjs/react';
 
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faCircleXmark,
     faEllipsisVertical,
-    faMagnifyingGlass,
-    faSpinner,
     faKeyboard,
     faCircleQuestion,
     faLanguage,
@@ -20,19 +18,18 @@ import {
     faCoins,
     faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
 
 //Custon Component
 import Image from '~/components/Image';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
-import AccountItem from '~/components/AccountItem';
-import { PopperWrapper } from '~/components/Popper';
-
+// import AccountItem from '~/components/AccountItem';
+// import { PopperWrapper } from '~/components/Popper';
 
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
-import { InboxIcon, ProfileIcon, UploadIcon } from '../../../Icons';
+import { InboxIcon, MessageIcon, ProfileIcon, UploadIcon } from '../../../Icons';
+import Search from '../Search';
 
 const cx = classNames.bind(styles);
 
@@ -92,13 +89,6 @@ function Header() {
             separate: true,
         },
     ]);
-    const [searchResults, setSearchResults] = useState([]);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResults([]);
-        }, 0);
-    }, []);
 
     //Handle logic
     const handleMenuChange = (menuItem) => {
@@ -123,55 +113,29 @@ function Header() {
                         <img src={images.logo} alt="Tiktok" />
                     </Link>
                 </div>
-                <HeadlessTippy
-                    interactive={true}
-                    visible={searchResults.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input
-                            className={cx('input-search')}
-                            placeholder="Search acount and video"
-                            type="text"
-                            spellCheck={false}
-                        />
-
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </HeadlessTippy>
+        
+                <Search />
 
                 <div className={cx('actions')}>
                     {curentUser ? (
                         <>
-                            <Tippy delay={[0, 200]} content="Tải video lên" placement="bottom">
+                            <Tippy delay={[[0, 150]]} content="Tải video lên" placement="bottom">
                                 <button className={cx('action-btn')}>
                                     <UploadIcon />
                                 </button>
                             </Tippy>
 
-                            <Tippy delay={[0, 200]} content="Chat ngay" placement="bottom">
+                            <Tippy delay={[[0, 150]]} content="Message" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <InboxIcon width='26px' height='26px' />
+                                    <MessageIcon />
                                 </button>
                             </Tippy>
-                            
+
+                            <Tippy delay={[[0, 150]]} content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon width="26px" height="26px" />
+                                </button>
+                            </Tippy>
                         </>
                     ) : (
                         <>
@@ -194,6 +158,7 @@ function Header() {
                                 className={cx('user-avatar')}
                                 src="https://img.lovepik.com/png/20231127/young-businessman-3d-cartoon-avatar-portrait-character-digital_708913_wh1200.png"
                                 alt="Avatar User"
+                                // fallback='https://fullstack.edu.vn/assets/f8-icon-lV2rGpF0.png'
                             />
                         ) : (
                             <button className={cx('more-btn')}>
