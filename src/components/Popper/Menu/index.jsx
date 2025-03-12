@@ -1,4 +1,4 @@
-import Tippy from '@tippyjs/react/headless';
+import HeadlessTippy from '@tippyjs/react/headless';
 
 import { PopperWrapper } from '~/components/Popper';
 
@@ -38,7 +38,7 @@ const Menu = ({ children, items = [], onChange =defaultFn }) => {
         });
     };
     return (
-        <Tippy
+        <HeadlessTippy
             placement="bottom-end"
             offset={[8,8]}
             interactive
@@ -62,7 +62,7 @@ const Menu = ({ children, items = [], onChange =defaultFn }) => {
             onHidden={()=> setMenuIndex(prev => prev.slice(0,1))}
         >
             {children}
-        </Tippy>
+        </HeadlessTippy>
     );
 };
 

@@ -1,5 +1,42 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+//Fonts embeded
+
+// @font-face {
+//     font-family: ProximaNova;
+//     src: url('/assets/fonts/proximanova_regular.ttf');
+//     font-weight: 400;
+
+// };
+
+// @font-face {
+//     font-family: ProximaNova;
+//     src: url('/assets/fonts/proximanova_bold.otf');
+//     font-weight: 700;
+    
+// };
+
+
+@font-face {
+    font-family: "ProximaNova";
+    src: url("/assets/fonts/proximanova_regular.ttf") format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "ProximaNova";
+    src: url("/assets/fonts/proximanova_bold.otf") format("opentype");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: SofiaPro;
+    src: url('/assets/fonts/sofia_pro_bold.otf');
+    font-weight: 700;
+    
+};
+
 
 :root {
     //Default Layout
@@ -28,7 +65,7 @@ html {
 }
 
 body {
-    font-family: 'poppins', sans-serif;
+    font-family: ProximaNova, sans-serif;
     font-size: 1.6rem;
     line-height: 1.5; //Chữ cách dòng
     text-rendering: optimizeSpeed; //Tối ưu font-size tải trên mạng

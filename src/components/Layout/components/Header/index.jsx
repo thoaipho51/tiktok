@@ -16,22 +16,23 @@ import {
     faKeyboard,
     faCircleQuestion,
     faLanguage,
-    faCloudUpload,
-    faMessage,
     faGear,
     faCoins,
-    faUser,
     faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 
-import { PopperWrapper } from '~/components/Popper';
+//Custon Component
+import Image from '~/components/Image';
 import Button from '~/components/Button';
-import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
+import AccountItem from '~/components/AccountItem';
+import { PopperWrapper } from '~/components/Popper';
+
 
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
+import { InboxIcon, ProfileIcon, UploadIcon } from '../../../Icons';
 
 const cx = classNames.bind(styles);
 
@@ -69,7 +70,7 @@ const MENU_ITEM = [
 function Header() {
     const [curentUser, setCurentUser] = useState([
         {
-            icon: <FontAwesomeIcon icon={faUser} />,
+            icon: <ProfileIcon />,
             title: 'Hồ sơ',
             to: '/profile',
         },
@@ -88,7 +89,7 @@ function Header() {
             icon: <FontAwesomeIcon icon={faSignOut} />,
             title: 'Đăng Xuất',
             to: '/logout',
-            separate: true
+            separate: true,
         },
     ]);
     const [searchResults, setSearchResults] = useState([]);
@@ -161,13 +162,16 @@ function Header() {
                         <>
                             <Tippy delay={[0, 200]} content="Tải video lên" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
                                 </button>
                             </Tippy>
 
-                            <button className={cx('action-btn')}>
-                                <FontAwesomeIcon icon={faMessage} />
-                            </button>
+                            <Tippy delay={[0, 200]} content="Chat ngay" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon width='26px' height='26px' />
+                                </button>
+                            </Tippy>
+                            
                         </>
                     ) : (
                         <>
@@ -184,9 +188,9 @@ function Header() {
                             </Button>
                         </>
                     )}
-                    <Menu items={curentUser ? curentUser: MENU_ITEM} onChange={handleMenuChange}>
+                    <Menu items={curentUser ? curentUser : MENU_ITEM} onChange={handleMenuChange}>
                         {curentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://img.lovepik.com/png/20231127/young-businessman-3d-cartoon-avatar-portrait-character-digital_708913_wh1200.png"
                                 alt="Avatar User"
