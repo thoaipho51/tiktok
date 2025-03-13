@@ -7,7 +7,6 @@ import HeaderPopper from './HeaderPopper';
 
 import styles from './Menu.module.scss';
 import classNames from 'classnames/bind';
-import { data } from 'react-router-dom';
 import { useState } from 'react';
 const cx = classNames.bind(styles);
 

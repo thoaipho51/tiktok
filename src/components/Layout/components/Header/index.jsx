@@ -87,6 +87,7 @@ function Header() {
             title: 'Đăng Xuất',
             to: '/logout',
             separate: true,
+            type: 'logout',
         },
     ]);
 
@@ -98,6 +99,8 @@ function Header() {
                 break;
             case 'keyboard':
                 console.log('Bật bàn phím ảo');
+                break;
+            case 'logout':
                 break;
             default:
                 console.log('Làm gì đó khác');
@@ -113,7 +116,7 @@ function Header() {
                         <img src={images.logo} alt="Tiktok" />
                     </Link>
                 </div>
-        
+
                 <Search />
 
                 <div className={cx('actions')}>

@@ -13,7 +13,7 @@ const App = () => {
                         return (
                             <Route
                                 key={index}
-                                path={route.patch}
+                                path={route.path}
                                 element={
                                     <Layout>
                                         <Page />
